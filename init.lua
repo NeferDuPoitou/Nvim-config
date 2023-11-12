@@ -37,6 +37,8 @@ require('lazy').setup({
   'rcarriga/nvim-dap-ui',
   -- 'ldelossa/nvim-dap-projects',
   'Pocco81/DAPInstall',
+  'mortepau/codicons.nvim',
+  'ahmedkhalf/project.nvim',
 
   {
    'preservim/nerdtree',
@@ -53,11 +55,88 @@ require('lazy').setup({
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   },
 
-{
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
-},
+  },
+
+  {
+  'nvimdev/dashboard-nvim',
+  event = 'VimEnter',
+  config = function()
+    require('dashboard').setup {
+      -- config
+      theme = 'doom',
+      config = {
+      header = {  "",
+                  "                             ",
+                  "                   _         ",
+                  "                  / \\        ",
+                  "                 /o o\\       ",
+                  "            _\\/  \\   / \\/_   ",
+                  "             \\._/  /_.//    ",
+                  "             `--,  ,----'    ",
+                  "               /   /         ",
+                  "     ^        /    \\         ",
+                  "    /|       (      )        ",
+                  "   / |     ,__\\    /__,      ",
+                  "   \\ \\   _//---,  ,--\\_     ",
+                  "    \\ \\   /\\  /  /   /\\      ",
+                  "     \\ \\.___,/  /            ",
+                  "      \\.______,/             ",
+                  "                             ",
+                  "                             ",
+                  "",}, --your header
+      center = {
+      {
+        icon = ' ',
+        icon_hl = 'Title',
+        desc = 'Open Recent Files     ',
+        desc_hl = 'String',
+        key = '?',
+        keymap = 'SPC',
+        key_hl = 'Number',
+        -- key_format = ' %s', -- remove default surrounding `[]`
+        action = 'lua print(2)'
+      },
+      {
+        icon = ' ',
+        desc = 'Open File Browser',
+        key = 'b',
+        keymap = 'SPC f',
+        action = 'lua print(3)'
+      },
+      {
+        icon = ' ',
+        desc = 'Open Projects Browser',
+        key = 'p',
+        keymap = 'SPC f',
+        action = 'lua print(3)'
+      },
+    },
+    footer = {"⠀⠀⠀⠀⠀⢀⣀⣰⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+              "⠀⠀⠀⣠⣾⣿⣿⣿⣿⢟⣦⠖⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+              "⠀⢀⣾⣿⣿⣿⣿⣽⡋⠾⠱⠞⢩⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+              "⢀⣸⣿⣿⣟⣿⣿⣿⠇⠀⣸⠂⣸⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+              "⠈⠻⣿⢟⣫⡌⠉⠁⡏⠉⠀⣠⣿⣿⡇⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+              "⠀⠀⢨⠟⣱⠆⠲⠚⠀⣠⣴⣿⣿⣿⠁⠀⠀⠀⣼⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+              "⠀⠀⠛⠀⠇⠲⢶⣾⣿⣿⣿⣿⣿⣿⣷⣤⣠⣴⣿⣿⣿⣷⣀⠀⠀⠀⠀⠀⠀⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠁⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⠀⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠉⠁⠀⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣧⠙⢿⣿⣿⣷⡀⠀⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⣿⣿⠇⠀⠙⠻⣿⣿⣆⠀",
+              "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⠆",}  --your footer
+    }
+    }
+  end,
+  dependencies = { {'nvim-tree/nvim-web-devicons'}}
+  },
+
+
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -147,6 +226,8 @@ require('lazy').setup({
     end,
   },
 
+
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -234,9 +315,9 @@ vim.o.mouse = 'a'
 
 vim.o.relativenumber = true
 vim.o.tabstop = 4
-vim.o.softtabstop = 2
-vim.o.shiftwidth= 2
-vim.o.expandtab = true
+vim.o.softtabstop = 4
+vim.o.shiftwidth= 4
+-- vim.o.expandtab = true
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -295,34 +376,33 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --[[ require('nvim-dap-projects').search_project_config() ]]
 
-require("dap").adapters.gdb = {
-	type = "executable",
-	command = "/usr/bin/gdb", -- adjust as needed
-	name = "gdb",
-	args = { "-i", "dap" },
+local dap = require('dap')
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode-17', -- adjust as needed, must be absolute path
+  name = 'lldb'
 }
 
-local gdb = {
-	name = "Launch gdb",
-	type = "gdb", -- matches the adapter
-	request = "launch", -- could also attach to a currently running process
-	program = function()
-		return vim.fn.input(
-			"Path to executable: ",
-			vim.fn.getcwd() .. "/",
-			"file"
-		)
-	end,
-	cwd = "${workspaceFolder}",
-	stopOnEntry = false,
-	args = {},
-	runInTerminal = false,
+dap.configurations.cpp = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+  },
 }
 
-require('dap').configurations.c = {
-	gdb -- different debuggers or more configurations can be used here
-}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
 
+require('dapui').setup();
+
+vim.keymap.set('n', '<leader>do', require('dapui').toggle, { desc = 'do, open debug interface'})
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -342,6 +422,20 @@ vim.api.nvim_set_keymap(
   "n",
   "<space>fb",
   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+  { noremap = true }
+)
+
+
+require('project_nvim').setup{
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+require('telescope').load_extension('projects')
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fp",
+  ":Telescope projects<CR>",
   { noremap = true }
 )
 
@@ -403,6 +497,8 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+
+
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -606,7 +702,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    --[[ ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_locally_jumpable() then
@@ -623,14 +719,13 @@ cmp.setup {
       else
         fallback()
       end
-    end, { 'i', 's' }),
+    end, { 'i', 's' }), ]]
   },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
 }
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
